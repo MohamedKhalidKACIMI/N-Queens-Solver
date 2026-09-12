@@ -15,10 +15,12 @@ The script uses a **Backtracking Algorithm**.
 ## Example Output
 For a 4x4 board (`N = 4`), the script outputs:
 
+```text
 . . Q .
 Q . . .
 . . . Q
 . Q . .
+```
 
 ## Technologies Used
 * Python 3
