@@ -13,13 +13,20 @@ The script uses a **Backtracking Algorithm**.
 4. If it reaches a dead end, it "backtracks" by removing the previous queen and trying a new position.
 
 ## Example Output
-For a 4x4 board (`N = 4`), the script outputs:
+The script features a custom print function that generates a beautiful Unicode checkerboard to visualize the final solution. For an 8x8 board (`N = 8`), the output looks like this:
 
 ```text
-. . Q .
-Q . . .
-. . . Q
-. Q . .
+   N-Queens Board
+  ------------------------
+  | ♛  □  ■  □  ■  □  ■  □ |
+  | ■  □  ■  □  ♛  □  ■  □ |
+  | □  ■  □  ■  □  ■  □  ♛ |
+  | ■  □  ■  □  ■  ♛  ■  □ |
+  | □  ■  ♛  ■  □  ■  □  ■ |
+  | ■  □  ■  □  ■  □  ■  ♛ |
+  | □  ♛  □  ■  □  ■  □  ■ |
+  | ■  □  ■  ♛  ■  □  ■  □ |
+  ------------------------
 ```
 
 ## Technologies Used
