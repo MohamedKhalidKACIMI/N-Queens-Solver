@@ -1,3 +1,9 @@
+"""
+N-Queens Backtracking Solver
+Finds a valid placement for N queens on an NxN chessboard 
+and prints the final solution using a beautiful Unicode grid.
+"""
+
 def create_board(n):
     """Generates an empty n x n chessboard filled with 0s."""
     B = []
@@ -10,7 +16,7 @@ def create_board(n):
 
 def is_safe(B, row, col):
     """Checks if a queen can be safely placed at B[row][col]."""
-    n = len(B) # Get the size of the board directly from the list
+    n = len(B)
     
     # Check this row on left side
     for i in range(col):
@@ -39,31 +45,41 @@ def solve_nq(B, col):
         
     for i in range(n):
         if is_safe(B, i, col):
-            # Place the queen
-            B[i][col] = 1
+            B[i][col] = 1 # Place the queen
             
-            # Recur to place the rest of the queens
             if solve_nq(B, col + 1):
                 return True
                 
-            # If placing queen here doesn't lead to a solution, backtrack (remove it)
-            B[i][col] = 0
+            B[i][col] = 0 # Backtrack: Remove the queen
             
     return False
 
 def print_board(B):
-    """Prints the board in a readable grid format."""
-    for row in B:
-        # Replaces 0s with dots and 1s with 'Q' for a better visual
-        formatted_row = ["Q" if x == 1 else "." for x in row]
-        print(" ".join(formatted_row))
+    """Prints the final board using a beautiful Unicode checkerboard pattern."""
+    print("\n   N-Queens Board")
+    print("  " + "-" * (len(B) * 3))
+    
+    for row in range(len(B)):
+        formatted_row = []
+        for col in range(len(B)):
+            if B[row][col] == 1:
+                formatted_row.append(" ♛ ") # The Queen
+            else:
+                # Creates a black and white checkerboard pattern
+                if (row + col) % 2 == 0:
+                    formatted_row.append(" ■ ")
+                else:
+                    formatted_row.append(" □ ")
+        print("  |" + "".join(formatted_row) + "|")
+        
+    print("  " + "-" * (len(B) * 3) + "\n")
 
 # --- Main Execution ---
-n = 4
+n = 8  # Changed to 8 for a full-sized chessboard!
 board = create_board(n)
 
 if solve_nq(board, 0):
-    print(f"Solution for {n}x{n} board:")
+    print(f"Solution found for an {n}x{n} board:")
     print_board(board)
 else:
-    print("No solution exists")
+    print("No solution exists for this board size.")
